@@ -27,6 +27,7 @@ Internet (Starlink)
 - [Hardware List](docs/hardware-list.md)
 - [Setup Guide](docs/setup-guide.md)
 - [Troubleshooting](docs/troubleshooting.md)
+- [Backup Guide](docs/backup-guide.md)
 
 ## Why This Setup?
 
