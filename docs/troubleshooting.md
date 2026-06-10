@@ -34,30 +34,30 @@ python3 -c "from passlib.hash import sha512_crypt; print(sha512_crypt.hash('your
 ## Pi-hole Issues
 
 ### Devices Not Showing in Pi-hole Dashboard
-**Cause:** Devices may still be connected to Starlink Wi-Fi instead of the AX1800.
+**Cause:** Devices may still be connected to Starlink Wi-Fi instead of the ZenWiFi XD5.
 
 **Fix:**
 1. Disable Starlink Wi-Fi in the Starlink app
-2. Reconnect all devices to AX1800 Wi-Fi
-3. Verify DNS is set correctly in the AX1800 DHCP settings
+2. Reconnect all devices to ZenWiFi XD5 Wi-Fi
+3. Verify DNS is set correctly in the ZenWiFi XD5 DHCP settings
 
 ### Pi-hole Dashboard Not Loading
 **Cause:** The Pi may have received a different IP after a reboot.
 
-**Fix:** Set a static IP in `/etc/dhcpcd.conf` as documented in the setup guide. Also check the AX1800 device list for the Pi's current IP.
+**Fix:** Set a static IP in `/etc/dhcpcd.conf` as documented in the setup guide. Also check the ZenWiFi XD5 device list for the Pi's current IP.
 
 ### Some Devices Bypass Pi-hole
 **Cause:** A secondary DNS was set in the router, or the device has hardcoded DNS (common on smart TVs and some IoT gear).
 
-**Fix:** Remove any secondary DNS in the AX1800 DHCP settings. For stubborn devices, set DNS manually on the device to `192.168.0.200`.
+**Fix:** Remove any secondary DNS in the ZenWiFi XD5 DHCP settings. For stubborn devices, set DNS manually on the device to `192.168.50.200`.
 
 ---
 
 ## Network Issues
 
 ### Double NAT Warning
-**Cause:** Having two routers (Starlink → AX1800) creates double NAT.
+**Cause:** Having two routers (Starlink → ZenWiFi XD5) creates double NAT.
 
 **Impact:** Generally fine for home monitoring. Only an issue if you need port forwarding or strict NAT for gaming.
 
-**Fix (if needed):** Enable IP Passthrough/Bypass Mode in the Starlink app to pass the public IP to the AX1800.
+**Fix (if needed):** Enable IP Passthrough/Bypass Mode in the Starlink app to pass the public IP to the ZenWiFi XD5.

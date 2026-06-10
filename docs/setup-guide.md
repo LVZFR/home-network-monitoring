@@ -3,7 +3,7 @@
 ## Prerequisites
 
 - Raspberry Pi 3 with SD card
-- TP-Link Archer AX1800 connected to the Starlink router via ethernet
+- Asus ZenWiFi XD5 (AX3000) connected to the Starlink router via ethernet
 - Mac or Windows PC with SD card reader
 - 2x ethernet cables
 
@@ -28,7 +28,7 @@
 
 ### Step 3: Boot the Pi
 1. Insert the SD card into the Pi
-2. Connect the Pi to the AX1800 via ethernet
+2. Connect the Pi to the ZenWiFi XD5 via ethernet
 3. Power it on and give it 1–2 minutes for first boot
 
 ---
@@ -36,12 +36,12 @@
 ## Part 2: Connect via SSH
 
 ### Step 1: Find the Pi's IP
-- Log in to the AX1800 admin panel at `192.168.0.1`
+- Log in to the ZenWiFi XD5 admin panel at `192.168.50.1`
 - Check the connected devices / DHCP client list for the Pi
 
 ### Step 2: SSH In
 ```bash
-ssh pi@192.168.0.xxx
+ssh don@192.168.50.xxx
 ```
 Accept the host key prompt and enter your password.
 
@@ -64,8 +64,8 @@ sudo nano /etc/dhcpcd.conf
 Add at the bottom (adjust interface name if using Wi-Fi):
 ```
 interface eth0
-static ip_address=192.168.0.200/24
-static routers=192.168.0.1
+static ip_address=192.168.50.200/24
+static routers=192.168.50.1
 static domain_name_servers=1.1.1.1 8.8.8.8
 ```
 
@@ -73,10 +73,10 @@ Reboot and reconnect on the new address:
 ```bash
 sudo reboot
 # then
-ssh pi@192.168.0.200
+ssh don@192.168.50.200
 ```
 
-> Alternatively (or additionally), set a DHCP reservation for the Pi's MAC address in the AX1800 so the router never hands `192.168.0.200` to anything else.
+> Alternatively (or additionally), set a DHCP reservation for the Pi's MAC address in the ZenWiFi XD5 so the router never hands `192.168.50.200` to anything else.
 
 ---
 
@@ -109,7 +109,7 @@ Enter your chosen password.
 ### Step 3: Verify the Dashboard
 Browse to:
 ```
-http://192.168.0.200/admin
+http://192.168.50.200/admin
 ```
 Log in with your admin password. The dashboard should load with zero or minimal queries at this point.
 
@@ -117,15 +117,15 @@ Log in with your admin password. The dashboard should load with zero or minimal 
 
 ## Part 5: Point the Network at Pi-hole
 
-### Step 1: Set DNS in the AX1800
-1. Log in to `192.168.0.1`
-2. Go to **Advanced → Network → DHCP Server**
-3. Set **Primary DNS** to `192.168.0.200`
-4. Leave Secondary DNS blank (a fallback DNS lets devices bypass Pi-hole)
-5. Save
+### Step 1: Set DNS in the ZenWiFi XD5
+1. Log in to `192.168.50.1`
+2. Go to **LAN → DHCP Server**
+3. Under **DNS and WINS Server Setting**, set **DNS Server 1** to `192.168.50.200`
+4. Leave DNS Server 2 blank (a fallback DNS lets devices bypass Pi-hole)
+5. Click **Apply**
 
 ### Step 2: Disable Starlink Wi-Fi
-In the Starlink app, disable the built-in Wi-Fi (bypass/router settings) so every device must connect through the AX1800. Devices left on Starlink Wi-Fi will never appear in Pi-hole.
+In the Starlink app, disable the built-in Wi-Fi (bypass/router settings) so every device must connect through the ZenWiFi XD5. Devices left on Starlink Wi-Fi will never appear in Pi-hole.
 
 ### Step 3: Renew DHCP Leases
 Reconnect devices (toggle Wi-Fi off/on, or reboot them) so they pick up the new DNS setting.
@@ -142,7 +142,7 @@ A blocked domain should resolve to `0.0.0.0`.
 
 ## Part 6: Ongoing Use
 
-- **Identify devices:** In Pi-hole, label clients by their MAC/IP (cross-reference the AX1800 device list)
+- **Identify devices:** In Pi-hole, label clients by their MAC/IP (cross-reference the ZenWiFi XD5 device list)
 - **Update Pi-hole:**
 ```bash
 pihole -up

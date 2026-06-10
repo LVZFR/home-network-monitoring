@@ -7,16 +7,16 @@
 | Single Board Computer | Raspberry Pi 3 | Runs Pi-hole | Any Pi 3 variant works |
 | SD Card | 16GB+ recommended | Pi OS storage | 8GB minimum |
 | SD Card Reader | Any | Flash OS to SD card | |
-| Router | TP-Link Archer AX1800 | Secondary router | Any router with configurable DHCP DNS works |
-| Ethernet Cable x2 | Cat5e or better | Wired connections | Starlink → AX1800, AX1800 → Pi |
+| Router | Asus ZenWiFi XD5 (AX3000) | Secondary router | Any router with configurable DHCP DNS works |
+| Ethernet Cable x2 | Cat5e or better | Wired connections | Starlink → ZenWiFi XD5, ZenWiFi XD5 → Pi |
 | Power Supply | Micro USB, 2.5A minimum | Powers the Pi | Official Pi PSU recommended |
 
 ## Network Equipment
 
-### TP-Link Archer AX1800
-- Wi-Fi 6 router
-- Handles up to 1800Mbps
-- Admin panel at `192.168.0.1`
+### Asus ZenWiFi XD5 (AX3000)
+- Wi-Fi 6 (AX3000) mesh system, expandable with additional nodes
+- Dual-band, up to 3000Mbps combined
+- Admin panel at `192.168.50.1` (or `router.asus.com`)
 - Used as secondary router behind Starlink
 
 ### Raspberry Pi 3
