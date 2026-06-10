@@ -21,7 +21,7 @@ It does **not** back up the query history database — only configuration. That'
 From your Mac, inside the repo folder:
 
 ```bash
-scp scripts/pihole-backup.sh pi@192.168.0.200:/home/pi/
+scp scripts/pihole-backup.sh don@192.168.50.200:/home/don/
 ```
 
 ### Step 2: Make It Executable
@@ -29,15 +29,15 @@ scp scripts/pihole-backup.sh pi@192.168.0.200:/home/pi/
 SSH into the Pi and set permissions:
 
 ```bash
-ssh pi@192.168.0.200
-chmod +x /home/pi/pihole-backup.sh
+ssh don@192.168.50.200
+chmod +x /home/don/pihole-backup.sh
 ```
 
 ### Step 3: Test It Manually
 
 ```bash
-sudo /home/pi/pihole-backup.sh
-ls -lh /home/pi/pihole-backups/
+sudo /home/don/pihole-backup.sh
+ls -lh /home/don/pihole-backups/
 ```
 
 You should see a dated backup file and a `backup.log`.
@@ -53,7 +53,7 @@ sudo crontab -e
 Add this line (runs every Sunday at 3:00 AM):
 
 ```
-0 3 * * 0 /home/pi/pihole-backup.sh
+0 3 * * 0 /home/don/pihole-backup.sh
 ```
 
 Save and exit. Verify it's registered:
@@ -70,7 +70,7 @@ sudo crontab -l
 │ │ ┌──── day of month (1–31)
 │ │ │ ┌── month (1–12)
 │ │ │ │ ┌ day of week (0–6, 0 = Sunday)
-0 3 * * 0  /home/pi/pihole-backup.sh
+0 3 * * 0  /home/don/pihole-backup.sh
 ```
 
 ## Rotation
@@ -79,7 +79,7 @@ The script keeps the **last 8 backups** (~2 months of weekly snapshots) and dele
 
 ## Restoring a Backup
 
-1. Open the Pi-hole admin panel: `http://192.168.0.200/admin`
+1. Open the Pi-hole admin panel: `http://192.168.50.200/admin`
 2. Go to **Settings → Teleporter**
 3. Under **Import**, choose the backup file and click **Import**
 
@@ -90,13 +90,13 @@ For a fresh Pi (e.g. dead SD card): reinstall Pi-hole first using the [Setup Gui
 Backups stored on the same SD card die with the SD card. Pull the latest backup to your Mac periodically:
 
 ```bash
-scp pi@192.168.0.200:/home/pi/pihole-backups/$(ssh pi@192.168.0.200 'ls -t /home/pi/pihole-backups/pihole-backup_* | head -1 | xargs basename') ~/Documents/pihole-backups/
+scp don@192.168.50.200:/home/don/pihole-backups/$(ssh don@192.168.50.200 'ls -t /home/don/pihole-backups/pihole-backup_* | head -1 | xargs basename') ~/Documents/pihole-backups/
 ```
 
 Or simply:
 
 ```bash
-scp "pi@192.168.0.200:/home/pi/pihole-backups/pihole-backup_*" ~/Documents/pihole-backups/
+scp "don@192.168.50.200:/home/don/pihole-backups/pihole-backup_*" ~/Documents/pihole-backups/
 ```
 
 ## Monitoring
@@ -104,7 +104,7 @@ scp "pi@192.168.0.200:/home/pi/pihole-backups/pihole-backup_*" ~/Documents/pihol
 Check the backup log anytime:
 
 ```bash
-ssh pi@192.168.0.200 'tail /home/pi/pihole-backups/backup.log'
+ssh don@192.168.50.200 'tail /home/don/pihole-backups/backup.log'
 ```
 
 Each run appends a dated success or error line.

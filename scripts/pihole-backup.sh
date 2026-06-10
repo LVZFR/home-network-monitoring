@@ -7,7 +7,7 @@
 # Repo: https://github.com/LVZFR/home-network-monitoring
 #
 
-BACKUP_DIR="/home/pi/pihole-backups"
+BACKUP_DIR="/home/don/pihole-backups"
 KEEP=8
 DATE=$(date +%Y-%m-%d_%H%M)
 
