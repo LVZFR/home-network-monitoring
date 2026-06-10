@@ -3,7 +3,7 @@
 A practical home network monitoring setup using a Raspberry Pi 3 running Pi-hole, behind a Starlink connection, with a Asus ZenWiFi XD5 (AX3000) as the secondary router.
 
 ## Architecture
-
+![Pi-hole Dashboard](screenshots/pihole-dash.png)
 ```
 Internet (Starlink)
         │
