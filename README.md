@@ -3,7 +3,7 @@
 A practical home network monitoring setup using a Raspberry Pi 3 running Pi-hole, behind a Starlink connection, with a TP-Link Archer AX1800 as the secondary router.
 
 ## Architecture
-
+![Pi-hole Dashboard](screenshots/pihole-dash.png)
 ```
 Internet (Starlink)
         │
