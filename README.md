@@ -41,6 +41,3 @@ Starlink routers are closed systems with no admin panel access. This setup works
 - Real-time traffic and DNS query monitoring
 - Linux administration on Raspberry Pi (headless SSH setup)
 
-## Author
-
-Don — Melbourne, Australia
